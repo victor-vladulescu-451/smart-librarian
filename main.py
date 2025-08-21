@@ -1,7 +1,7 @@
 import chromadb
 import uuid
 
-client = chromadb.PersistentClient(path="./chroma_data")
+client = chromadb.PersistentClient(path="data/chroma_data")
 
 collection_name = "books"
 
