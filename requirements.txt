@@ -1,1 +1,15 @@
 chromadb
+fastapi>=0.111
+uvicorn[standard]>=0.30
+pydantic>=2.7
+pydantic-settings>=2.2
+pytest>=8.2
+httpx>=0.27
+ruff>=0.5
+
+
+# just in case we really want to visualize the data somehow (ultra optional)
+pandas
+numpy
+matplotlib
+seaborn
