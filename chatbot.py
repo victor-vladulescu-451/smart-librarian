@@ -4,11 +4,9 @@ import os
 
 
 def build_prompt(question: str, books) -> str:
-
     context = "\n\n".join(
         " # " + book[1].get("title") + "\n" + book[0] for book in books
     )
-
     return textwrap.dedent(
         f"""
     You are a librarian, and will answer the 'Question' only by using information
@@ -24,8 +22,8 @@ def build_prompt(question: str, books) -> str:
     ).strip()
 
 
-def generate_answer(prompt: str) -> str:
+def generate_answer_stream(prompt: str):
     chat_model = os.getenv("CHAT_MODEL")
-    ollama = Client()  # defaults to http://localhost:11434
-    out = ollama.generate(model=chat_model, prompt=prompt, stream=False)
-    return out["response"]
+    ollama = Client()
+    for chunk in ollama.generate(model=chat_model, prompt=prompt, stream=True):
+        yield chunk["response"]
