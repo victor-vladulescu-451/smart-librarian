@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import chromadb
 import uuid
 
@@ -29,14 +30,29 @@ if collection is None:
         documents=list(books_store.values()),
         metadatas=[{"title": title} for title in books_store.keys()],
     )
+=======
+from dotenv import load_dotenv
+import chroma
+import chatbot
+>>>>>>> 97941b2aa315bae08abbae081e5893b92786af60
 
 
-results = collection.query(
-    query_texts=[
-        "censorship",
-        "justice",
-    ],
-    n_results=1,
-)
+if __name__ == "__main__":
 
+<<<<<<< HEAD
 print(results)
+=======
+    load_dotenv()
+
+    print("Question: ")
+    question = input()
+
+    books = chroma.get_collection()
+    chunks = chroma.query_chunks(books, question, k=3)
+    prompt = chatbot.build_prompt(question, chunks)
+
+    print("\nAnswer:\n", end="", flush=True)
+    for chunk in chatbot.generate_answer_stream(prompt):
+        print(chunk, end="", flush=True)
+    print()
+>>>>>>> 97941b2aa315bae08abbae081e5893b92786af60

@@ -13,3 +13,7 @@ pandas
 numpy
 matplotlib
 seaborn
+
+# LLMs 
+ollama
+openai
